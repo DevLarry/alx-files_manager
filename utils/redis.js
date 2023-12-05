@@ -4,7 +4,7 @@ class RedisClient {
   constructor() {
     this.client = createClient();
     this.client
-      .on("error", (err) => {
+      .on('error', (err) => {
         console.error(err.message);
       })
       .connect();
@@ -15,7 +15,7 @@ class RedisClient {
   }
 
   async get(key) {
-    return await this.client.hget(key);
+    return this.client.hget(key);
   }
 
   async set(key, value, duration) {
@@ -27,9 +27,9 @@ class RedisClient {
     }
   }
 
-  del(key){
-    this.client.hdel(key)
+  del(key) {
+    this.client.hdel(key);
   }
 }
 
-export default RedisClient
+export default new RedisClient();
