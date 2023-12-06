@@ -1,17 +1,18 @@
 import RedisClient from '../utils/redis';
 import DBClient from '../utils/db';
 
-// eslint-disable-next-line import/prefer-default-export
-export function getStatus(req, res) {
-  res.json({
-    redis: RedisClient.isAlive(),
-    db: DBClient.isAlive(),
-  });
-}
+export default class AppController {
+  static async getStatus(req, res) {
+    res.status(200).json({
+      redis: await RedisClient.isAlive(),
+      db: await DBClient.isAlive(),
+    });
+  }
 
-export function getStats(req, res) {
-  res.json({
-    users: DBClient.nbUsers(),
-    files: DBClient.nbFiles(),
-  });
+  static async getStats(req, res) {
+    res.status(200).json({
+      users: await DBClient.nbUsers(),
+      files: await DBClient.nbFiles(),
+    });
+  }
 }
