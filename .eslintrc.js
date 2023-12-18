@@ -20,12 +20,6 @@ module.exports = {
     "no-console": "off",
     "no-shadow": "off",
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
-    'prettier/prettier': [
-      'warn',
-      {
-        singleQuote: true
-      }
-    ],
   },
   overrides: [
     {
