@@ -9,7 +9,10 @@ class DBClient {
     // this.isConnected = true;
 
     this.client = new MongoClient(URI, { useUnifiedTopology: true });
-    this.client.connect();
+    this.client.connect((err) => {
+      if (err) console.log('Database not connected');
+      else console.log('Database connected');
+    });
   }
 
   isAlive() {
